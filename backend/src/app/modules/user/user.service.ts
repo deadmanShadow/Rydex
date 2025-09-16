@@ -1,13 +1,12 @@
-// user.service.ts
+import bcryptjs from "bcryptjs";
+import httpStatus from "http-status-codes";
+import { JwtPayload } from "jsonwebtoken";
+import { envVars } from "../../config/env";
 import AppError from "../../errorHelpers/AppError";
+import { QueryBuilder } from "../../utils/QueryBuilder";
+import { userSearchableFields } from "./user.constant";
 import { IAuthProvider, IUser, Role } from "./user.interface";
 import { User } from "./user.model";
-import httpStatus from "http-status-codes";
-import bcryptjs from "bcryptjs";
-import { envVars } from "../../config/env";
-import { userSearchableFields } from "./user.constant";
-import { QueryBuilder } from "../../utils/QueryBuilder";
-import { JwtPayload } from "jsonwebtoken";
 
 const createUser = async (payload: Partial<IUser>) => {
   const { email, password, ...rest } = payload;

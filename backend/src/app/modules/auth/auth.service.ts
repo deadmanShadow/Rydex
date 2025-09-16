@@ -61,10 +61,7 @@ const setPassword = async (userId: string, plainPassword: string) => {
     throw new AppError(404, "User not found");
   }
 
-  if (
-    user.password &&
-    user.auths.some((providerObject) => providerObject.provider === "google")
-  ) {
+  if (user.password) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
       "You have already set you password. Now you can change the password from your profile password update"

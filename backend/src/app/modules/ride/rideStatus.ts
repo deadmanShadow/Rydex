@@ -26,7 +26,7 @@ export const getFullRideStatusFlow = (): string => {
   while (current && !visited.has(current)) {
     flow.push(current);
     visited.add(current);
-    current = rideStatusFlow[current]?.[0]; // Only follow the primary path
+    current = rideStatusFlow[current]?.[0];
   }
 
   return flow.join(" → ");

@@ -1,4 +1,3 @@
-// ride.service.ts
 import httpStatus from "http-status-codes";
 import { Types } from "mongoose";
 import AppError from "../../errorHelpers/AppError";
@@ -27,7 +26,6 @@ const requestRide = async (payload: Partial<IRide>, userId: string) => {
   const user = await User.findById(userId);
   if (!user) throw new AppError(httpStatus.NOT_FOUND, "User not found");
 
-  // ⛔ Block if rider already has an active ride
   const existingRide = await Ride.findOne({
     riderId: userId,
     status: { $in: ACTIVE_RIDE_STATUSES },
@@ -57,7 +55,6 @@ const requestRide = async (payload: Partial<IRide>, userId: string) => {
   if (!vehicleType)
     throw new AppError(httpStatus.BAD_REQUEST, "Vehicle type required");
 
-  // Normalize and validate vehicle type from request
   const normalizedVehicleType = String(vehicleType).toUpperCase();
   if (
     !Object.values(VEHICLE_TYPE).includes(normalizedVehicleType as VEHICLE_TYPE)
@@ -70,7 +67,6 @@ const requestRide = async (payload: Partial<IRide>, userId: string) => {
     );
   }
 
-  // Correct GeoJSON order [lng, lat]
   const pickup: IRideLocation = {
     type: "Point",
     coordinates: [pickupLocation.coordinates[1], pickupLocation.coordinates[0]],
@@ -164,7 +160,6 @@ const updateRideStatus = async (
       throw new AppError(httpStatus.BAD_REQUEST, "Driver profile not found");
     }
 
-    // Reject based on driver status
     if (
       [
         DRIVER_STATUS.PENDING,
@@ -182,7 +177,6 @@ const updateRideStatus = async (
       throw new AppError(httpStatus.BAD_REQUEST, "You are currently offline");
     }
 
-    // ✅ Vehicle type check
     if (driver.vehicleType !== ride.vehicleType) {
       throw new AppError(
         httpStatus.BAD_REQUEST,
@@ -190,7 +184,6 @@ const updateRideStatus = async (
       );
     }
 
-    // ✅ Prevent driver from accepting multiple active rides
     if (newStatus === RideStatus.ACCEPTED) {
       const alreadyActiveRide = await Ride.findOne({
         driverId: userId,
@@ -216,14 +209,7 @@ const updateRideStatus = async (
       );
     }
 
-    // ⛔ Prevent invalid transitions
     const allowedNextStatuses = rideStatusFlow[ride.status];
-    // if (!allowedNextStatuses.includes(newStatus)) {
-    //   throw new AppError(
-    //     httpStatus.BAD_REQUEST,
-    //     `Invalid ride status transition from '${ride.status}' to '${newStatus}'`
-    //   );
-    // }
 
     if (!allowedNextStatuses.includes(newStatus)) {
       throw new AppError(
@@ -233,7 +219,6 @@ const updateRideStatus = async (
       );
     }
 
-    // ⛔ Only assigned driver can update ride after acceptance
     if (
       ride.driverId &&
       ride.driverId.toString() !== userId &&
@@ -258,7 +243,7 @@ const updateRideStatus = async (
       [RideStatus.IN_TRANSIT]: "in_transit",
       [RideStatus.COMPLETED]: "completedAt",
       [RideStatus.CANCELLED]: "cancelledAt",
-      [RideStatus.REQUESTED]: "requestedAt", // unlikely to be set here
+      [RideStatus.REQUESTED]: "requestedAt",
     };
 
     const updateData: Partial<IRide> = {
@@ -269,12 +254,10 @@ const updateRideStatus = async (
       },
     };
 
-    // ✅ Assign driver on first accept
     if (!ride.driverId && newStatus === RideStatus.ACCEPTED) {
       updateData.driverId = new Types.ObjectId(userId);
     }
 
-    // ✅ Add fare to earnings on completion
     if (newStatus === RideStatus.COMPLETED && ride.fare && driver) {
       await Driver.updateOne(
         { userId },
@@ -348,7 +331,6 @@ const cancelRide = async (
     );
   }
 
-  // ✅ Apply cancellation
   ride.status = cancelStatus;
   ride.timestamps.cancelledAt = new Date();
   await ride.save();
@@ -362,8 +344,6 @@ const rideHistory = async (userId: string) => {
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, "User not found");
   }
-
-  // Fetch all rides for the rider across all statuses
   const rides = await Ride.find({
     riderId: userId,
   }).sort({ "timestamps.requestedAt": -1 });

@@ -1,8 +1,12 @@
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import express from "express";
+import express, { Request, Response } from "express";
 import expressSession from "express-session";
 import passport from "passport";
+import { envVars } from "./app/config/env";
+import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
+import notFound from "./app/middlewares/notFound";
+import { router } from "./app/routes";
 const app = express();
 app.use(
   expressSession({
@@ -27,7 +31,7 @@ app.use("/api/v1", router);
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json({
-    message: "Welcome to Server",
+    message: "Welcome to Rydex Server",
   });
 });
 

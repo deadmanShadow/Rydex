@@ -7,35 +7,30 @@ const router = express.Router();
 
 router.get("/public", StatsController.getPublicHomepageStats);
 
-// Dashboard stats - overview of all key metrics
 router.get(
   "/dashboard",
   checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
   StatsController.getDashboardStats
 );
 
-// Ride statistics
 router.get(
   "/rides",
   checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
   StatsController.getRideStats
 );
 
-// User statistics
 router.get(
   "/users",
   checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
   StatsController.getUserStats
 );
 
-// Driver statistics
 router.get(
   "/drivers",
   checkAuth(Role.ADMIN, Role.SUPER_ADMIN),
   StatsController.getDriverStats
 );
 
-// Revenue statistics
 router.get(
   "/revenue",
   checkAuth(Role.ADMIN, Role.SUPER_ADMIN),

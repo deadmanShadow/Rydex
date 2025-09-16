@@ -1,5 +1,5 @@
-// driver.model.ts
 import { Schema, model } from "mongoose";
+
 import { VEHICLE_TYPE } from "../ride/ride.interface";
 import { AVAILABILITY, DRIVER_STATUS, IDriver } from "./driver.interface";
 

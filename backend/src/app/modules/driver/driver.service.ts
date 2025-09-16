@@ -1,8 +1,9 @@
-// driver.service.ts
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from "http-status-codes";
 import { JwtPayload } from "jsonwebtoken";
 import mongoose from "mongoose";
 import AppError from "../../errorHelpers/AppError";
+
 import { Ride } from "../ride/ride.model";
 import { IUser, Role } from "../user/user.interface";
 import { User } from "../user/user.model";

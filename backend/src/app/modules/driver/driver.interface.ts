@@ -1,4 +1,3 @@
-// driver.interface.ts
 import { Types } from "mongoose";
 import { VEHICLE_TYPE } from "../ride/ride.interface";
 
