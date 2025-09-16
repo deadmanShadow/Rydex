@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
-import { AnyZodObject } from "zod";
+import { ZodObject } from "zod";
 
 export const validateQuery =
-  (zodSchema: AnyZodObject) =>
+  (zodSchema: ZodObject) =>
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      req.query = await zodSchema.parseAsync(req.query);
+      const parsedQuery = await zodSchema.parseAsync(req.query);
+      // Optionally, you can attach parsedQuery to req as a new property
+      (req as any).validatedQuery = parsedQuery;
       next();
     } catch (error) {
       next(error);
