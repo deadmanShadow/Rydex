@@ -19,7 +19,8 @@ import { withAuth } from "@/utils/withAuth";
 import { createBrowserRouter, Navigate } from "react-router";
 import { adminSidebarItems } from "./AdminSidebarItems";
 import { driverSidebarItems } from "./DriverSidebarItems";
-import { riderSidebarItems } from "./RiderSidebarItems";
+import { riderSidebarItems } from "./RideSidebarItems";
+
 // import RideDetails from "@/pages/Rider/RideDetails";
 
 export const router = createBrowserRouter([

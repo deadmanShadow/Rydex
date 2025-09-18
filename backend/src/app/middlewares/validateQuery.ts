@@ -7,7 +7,7 @@ export const validateQuery =
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const parsedQuery = await zodSchema.parseAsync(req.query);
-      // Optionally, you can attach parsedQuery to req as a new property
+
       (req as any).validatedQuery = parsedQuery;
       next();
     } catch (error) {

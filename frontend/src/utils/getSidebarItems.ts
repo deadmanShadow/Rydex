@@ -2,7 +2,8 @@
 import { role } from "@/constants/role";
 import { adminSidebarItems } from "@/routes/AdminSidebarItems";
 import { driverSidebarItems } from "@/routes/DriverSidebarItems";
-import { riderSidebarItems } from "@/routes/RiderSidebarItems";
+import { riderSidebarItems } from "@/routes/RideSidebarItems";
+
 // import { adminSidebarItems } from "@/routes/AdminSidebarItems";
 import type { TRole } from "@/types";
 

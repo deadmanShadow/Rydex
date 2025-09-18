@@ -4,6 +4,7 @@ import { NextFunction, Request, Response } from "express";
 import httpStatus from "http-status-codes";
 import { JwtPayload } from "jsonwebtoken";
 import passport from "passport";
+import { envVars } from "../../config/env";
 import AppError from "../../errorHelpers/AppError";
 import { catchAsync } from "../../utils/catchAsync";
 import { sendResponse } from "../../utils/sendResponse";
@@ -87,6 +88,27 @@ const logout = catchAsync(
     });
   }
 );
+const googleCallbackController = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    let redirectTo = req.query.state ? (req.query.state as string) : "";
+
+    if (redirectTo.startsWith("/")) {
+      redirectTo = redirectTo.slice(1);
+    }
+
+    const user = req.user;
+
+    if (!user) {
+      throw new AppError(httpStatus.NOT_FOUND, "User Not Found");
+    }
+
+    const tokenInfo = createUserTokens(user);
+
+    setAuthCookie(res, tokenInfo);
+
+    res.redirect(`${envVars.FRONTEND_URL}/${redirectTo}`);
+  }
+);
 
 const changePassword = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -140,6 +162,7 @@ export const AuthControllers = {
   credentialsLogin,
   getNewAccessToken,
   logout,
+  googleCallbackController,
   changePassword,
   resetPassword,
   setPassword,

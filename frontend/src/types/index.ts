@@ -52,13 +52,6 @@ export interface IPaginationMeta {
 export interface IResponseWithMeta<T> extends IResponse<T> {
   meta: IMeta;
 }
-/**
- Interface 'IResponseWithMeta<T>' incorrectly extends interface 'IResponse<T>'.
-  Types of property 'meta' are incompatible.
-    Type 'IMeta' is not assignable to type '[]'.ts(2430)
-interface IResponseWithMeta<T>
-
- */
 
 export interface ISidebarItem {
   title: string;

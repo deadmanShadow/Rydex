@@ -1,5 +1,4 @@
-// import { AppSidebar } from "@/components/app-sidebar";
-
+import Logo from "@/assets/icons/Logo";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -8,7 +7,6 @@ import {
 } from "@/components/ui/sidebar";
 import { Link, Outlet } from "react-router";
 import { AppSidebar } from "../app-sidebar";
-import Logo from "@/assets/icons/Logo";
 
 export default function DashboardLayout() {
   return (

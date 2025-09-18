@@ -1,5 +1,13 @@
 import Logo from "@/assets/icons/Logo";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -12,33 +20,23 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ModeToggle } from "./ModeToggler";
-import { Link, useLocation } from "react-router";
-import { useEffect, useState } from "react";
+import { role } from "@/constants/role";
 import {
   authApi,
   useLogoutMutation,
   useUserInfoQuery,
 } from "@/redux/features/auth/auth.api";
 import { useAppDispatch } from "@/redux/hook";
-import { role } from "@/constants/role";
-import { LogOut, User, Settings } from "lucide-react";
+import { LogOut, Settings, User } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router";
 import { toast } from "sonner";
-
-// Navigation links array to be used in both desktop and mobile menus
+import { ModeToggle } from "./ModeToggler";
 const navigationLinks = [
   { href: "/", label: "Home", role: "PUBLIC" },
   { href: "/about", label: "About", role: "PUBLIC" },
@@ -66,18 +64,15 @@ export default function Navbar() {
     dispatch(authApi.util.resetApiState());
     toast.success("Logged out successfully");
   };
-
-  // Get user's first character for avatar fallback
   const getUserInitial = (name: string) => {
     return name.charAt(0).toUpperCase();
   };
 
-  // Check if user has Google profile picture
   const hasGooglePicture = data?.data?.auths?.some(
-    (auth) => auth.provider === "google"
+    // i changehere from auth => (auth)
+    (auth: { provider: string }) => auth.provider === "google"
   );
 
-  // Sticky + scroll-aware background/shadow
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     onScroll();
@@ -228,16 +223,6 @@ export default function Navbar() {
                         variant="ghost"
                         className="relative h-10 w-10 rounded-full p-0 hover:bg-accent transition-colors"
                       >
-                        {/* <Avatar className="h-10 w-10">
-                          <AvatarImage
-                            src={data.data.picture || ""}
-                            alt={data.data.name}
-                            className="object-cover"
-                          />
-                          <AvatarFallback className="bg-primary/10 text-primary font-semibold text-lg">
-                            {getUserInitial(data.data.name)}
-                          </AvatarFallback>
-                        </Avatar> */}
                         <Avatar className="h-10 w-10">
                           {data?.data?.picture ? (
                             <AvatarImage
@@ -264,17 +249,6 @@ export default function Navbar() {
                 >
                   {/* User Info Section */}
                   <div className="flex items-center gap-3 pb-3">
-                    {/* <Avatar className="h-12 w-12">
-                      <AvatarImage
-                        src={data.data.picture || ""}
-                        alt={data.data.name}
-                        className="object-cover"
-                      />
-                      <AvatarFallback className="bg-primary/10 text-primary font-semibold text-xl">
-                        {getUserInitial(data.data.name)}
-                      </AvatarFallback>
-                    </Avatar> */}
-
                     <Avatar className="h-12 w-12">
                       {data?.data?.picture ? (
                         <AvatarImage

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 
 import Logo from "@/assets/icons/Logo";
@@ -51,7 +52,7 @@ const userData: IResponse<IUser> | undefined
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                {item.items.map((item) => {
+                {item.items.map((item: any) => {
                   const isActive = location.pathname.startsWith(item.url);
                   return (
                     <SidebarMenuItem key={item.title}>

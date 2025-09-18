@@ -1,40 +1,39 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMemo, useState } from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  PieChart,
-  Pie,
-  Cell,
-  Area,
-  AreaChart,
-} from "recharts";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  TrendingUp,
-  TrendingDown,
-  DollarSign,
-  Car,
-  Calendar,
-  MapPin,
-  Clock,
-  Award,
-} from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { IDriverEarnings } from "@/types";
+import {
+  Award,
+  Calendar,
+  Car,
+  Clock,
+  DollarSign,
+  MapPin,
+  TrendingDown,
+  TrendingUp,
+} from "lucide-react";
+import { useMemo, useState } from "react";
+import {
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 interface EarningsDashboardProps {
   earningsData: IDriverEarnings;
   isLoading?: boolean;
 }
 
-// ✅ Define earnings entry type
 interface IEarningsEntry {
   date?: string;
   week?: string;
@@ -48,6 +47,7 @@ interface IVehicleTypeSlice {
   value: number;
   rides: number;
   color: string;
+  [key: string]: string | number;
 }
 
 interface IEarningsGroups {

@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useToast } from "@/hooks/use-toast";
 import {
-  useUserInfoQuery,
-  useUpdateUserMutation,
   useResetPasswordMutation,
   useSetPasswordMutation,
+  useUpdateUserMutation,
+  useUserInfoQuery,
 } from "@/redux/features/auth/auth.api";
-import { Camera, Eye, EyeOff, Loader2, Save, Key } from "lucide-react";
 import type { IAuthProvider, IUser } from "@/types";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Camera, Eye, EyeOff, Key, Loader2, Save } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 // Form validation schemas
 const personalInfoSchema = z.object({

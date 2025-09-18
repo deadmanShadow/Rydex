@@ -8,7 +8,7 @@ const GoogleCallback = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
-    const err = params.get("err"); // backend sends ?err=SUSPENDED or ?err=BLOCKED
+    const err = params.get("err");
 
     if (err === "SUSPENDED" || err === "BLOCKED") {
       toast.error(`Your account is ${err}`);
