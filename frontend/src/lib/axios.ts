@@ -6,15 +6,11 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-// Add a request interceptor
 axiosInstance.interceptors.request.use(
   function (config) {
-    // Do something before request is sent
-
     return config;
   },
   function (error) {
-    // Do something with request error
     return Promise.reject(error);
   }
 );
@@ -44,8 +40,6 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   async (error) => {
-    // console.log("Request failed", error.response.data.message);
-
     const originalRequest = error.config as AxiosRequestConfig & {
       _retry: boolean;
     };
@@ -83,7 +77,6 @@ axiosInstance.interceptors.response.use(
       }
     }
 
-    //* For Everything
     return Promise.reject(error);
   }
 );

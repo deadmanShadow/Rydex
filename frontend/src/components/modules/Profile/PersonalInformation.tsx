@@ -18,7 +18,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-// Form validation schemas
 const personalInfoSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
@@ -66,7 +65,6 @@ export default function PersonalInformation() {
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>("");
 
-  // API hooks
   const { data: userResponse, isLoading: isLoadingUser } = useUserInfoQuery();
   const [updateUser, { isLoading: isUpdating }] = useUpdateUserMutation();
   const [resetPassword, { isLoading: isResettingPassword }] =

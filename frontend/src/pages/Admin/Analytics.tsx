@@ -1,14 +1,7 @@
-import { useMemo } from "react";
-import {
-  useGetDashboardStatsQuery,
-  useGetDriverStatsQuery,
-  useGetRevenueStatsQuery,
-  useGetRideStatsQuery,
-  useGetUserStatsQuery,
-} from "@/redux/features/admin/stats.api";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
   TableBody,
@@ -17,7 +10,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Skeleton } from "@/components/ui/skeleton";
+import {
+  useGetDashboardStatsQuery,
+  useGetDriverStatsQuery,
+  useGetRevenueStatsQuery,
+  useGetRideStatsQuery,
+  useGetUserStatsQuery,
+} from "@/redux/features/admin/stats.api";
+import { useMemo } from "react";
 
 import MultiLineChart from "@/redux/features/admin/MultiLineChart";
 

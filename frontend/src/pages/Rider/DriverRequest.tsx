@@ -23,21 +23,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { VEHICLE_TYPE } from "@/types/driver.type";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { InfoIcon, TriangleAlert } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { useLocation } from "react-router";
-import { z } from "zod";
-import {
-  useApplyDriverMutation,
-  useDriverApplicationQuery,
-} from "@/redux/features/driver/driver.api";
-import { useEffect } from "react";
 import {
   useUpdateUserMutation,
   useUserInfoQuery,
 } from "@/redux/features/auth/auth.api";
+import {
+  useApplyDriverMutation,
+  useDriverApplicationQuery,
+} from "@/redux/features/driver/driver.api";
+import { VEHICLE_TYPE } from "@/types/driver.type";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { InfoIcon, TriangleAlert } from "lucide-react";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useLocation } from "react-router";
+import { z } from "zod";
 
 const driverRequestSchema = z.object({
   vehicleType: z.string().min(1, "Vehicle type is required"),
@@ -325,9 +325,6 @@ export default function DriverRequest() {
                   After approval, your role will be updated to DRIVER.
                 </p>
               </div>
-              {/* <p className="text-xs text-muted-foreground">
-              After approval, your role will be updated to DRIVER.
-            </p> */}
             </CardFooter>
           </Card>
         </div>

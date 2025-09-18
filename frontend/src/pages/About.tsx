@@ -9,12 +9,11 @@ export default function About() {
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
-            About Our Ride Management Platform
+            About Our Rydex
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            We’re on a mission to make urban transportation safer, faster, and
-            more reliable for everyone – riders, drivers, and administrators
-            alike.
+            We're dedicated to making urban transportation safer, quicker, and
+            more dependable for riders, drivers, and administrators.
           </p>
         </div>
 
@@ -25,13 +24,13 @@ export default function About() {
               <div className="flex items-center gap-3 mb-5">
                 <Target className="h-7 w-7 text-primary" />
                 <h3 className="text-xl font-semibold tracking-tight text-card-foreground">
-                  Our Mission
+                  Our Target
                 </h3>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                To connect riders and drivers seamlessly through technology,
-                ensuring affordable and secure rides while empowering drivers
-                with flexible earning opportunities.
+                The goal is to connect riders and drivers smoothly through
+                technology, providing affordable and secure rides, while
+                offering drivers flexible earning opportunities.
               </p>
             </CardContent>
           </Card>
@@ -45,9 +44,9 @@ export default function About() {
                 </h3>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                To redefine mobility in every city we serve, creating a safe and
-                sustainable ride ecosystem where technology enhances everyday
-                journeys.
+                To transform mobility in every city we operate, building a safe
+                and sustainable ride ecosystem where technology improves daily
+                travel.
               </p>
             </CardContent>
           </Card>
@@ -64,8 +63,8 @@ export default function About() {
                 Our Team
               </h4>
               <p className="text-muted-foreground leading-relaxed">
-                A diverse group of engineers, designers, and innovators
-                passionate about solving real-world mobility challenges.
+                A team of engineers, designers, and innovators committed to
+                solving real-world mobility challenges.
               </p>
             </CardContent>
           </Card>
@@ -77,8 +76,8 @@ export default function About() {
                 Rider & Driver First
               </h4>
               <p className="text-muted-foreground leading-relaxed">
-                Every feature is designed to create value and convenience for
-                riders and drivers, putting them at the heart of our system.
+                Each feature is crafted to provide value and convenience for
+                riders and drivers, placing them at the core of our system.
               </p>
             </CardContent>
           </Card>
@@ -91,7 +90,7 @@ export default function About() {
               </h4>
               <p className="text-muted-foreground leading-relaxed">
                 From SOS features to driver verification, safety and trust are
-                built into every ride, every interaction, every time.
+                embedded in every ride, every interaction, every time.
               </p>
             </CardContent>
           </Card>

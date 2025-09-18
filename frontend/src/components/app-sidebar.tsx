@@ -22,19 +22,10 @@ import { NavUser } from "./ui/nav-user";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: userData } = useUserInfoQuery(undefined);
-  // console.log(userData?.data);
 
-  // This is sample data.
   const data = {
-    // navMain: adminSidebarItems,
     navMain: getSidebarItems(userData?.data?.role),
   };
-  /**
-   Argument of type 'Role | undefined' is not assignable to parameter of type 'TRole'.
-  Type 'undefined' is not assignable to type 'TRole'.ts(2345)
-const userData: IResponse<IUser> | undefined
-
-   */
 
   const location = useLocation();
 

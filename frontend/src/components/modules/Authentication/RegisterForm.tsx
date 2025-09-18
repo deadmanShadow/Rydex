@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// src/components/modules/Authentication/RegisterForm.tsx
-import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Link, useNavigate } from "react-router";
 import {
   Form,
   FormControl,
@@ -13,27 +10,23 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Password from "@/components/ui/Password";
-import { toast } from "sonner";
+import config from "@/config";
+import { cn } from "@/lib/utils";
 import {
+  useLazyUserInfoQuery,
   useLoginMutation,
   useRegisterMutation,
-  useLazyUserInfoQuery,
 } from "@/redux/features/auth/auth.api";
-import { FcGoogle } from "react-icons/fc";
-import config from "@/config";
-// import {
-//   Select,
-//   SelectContent,
-//   SelectItem,
-//   SelectTrigger,
-//   SelectValue,
-// } from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Car, User } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const registerSchema = z
   .object({
@@ -86,7 +79,6 @@ export function RegisterForm({
 
       await login({ email: data.email, password: data.password }).unwrap();
 
-      // Ensure auth cookie/session is recognized before navigating
       try {
         await triggerUserInfo(undefined).unwrap();
       } catch (_) {
@@ -192,31 +184,6 @@ export function RegisterForm({
                 </FormItem>
               )}
             />
-
-            {/* <FormField
-              control={form.control}
-              name="role"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Select Role (for redirect only)</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Choose a role" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="RIDER">Rider</SelectItem>
-                      <SelectItem value="DRIVER">Driver</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            /> */}
 
             <FormField
               control={form.control}

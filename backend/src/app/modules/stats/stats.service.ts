@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { Ride } from "../ride/ride.model";
-import { User } from "../user/user.model";
+import { AVAILABILITY, DRIVER_STATUS } from "../driver/driver.interface";
 import { Driver } from "../driver/driver.model";
-import { Role, IsActive } from "../user/user.interface";
 import { RideStatus, VEHICLE_TYPE } from "../ride/ride.interface";
-import { DRIVER_STATUS, AVAILABILITY } from "../driver/driver.interface";
+import { Ride } from "../ride/ride.model";
+import { IsActive, Role } from "../user/user.interface";
+import { User } from "../user/user.model";
 
 const now = new Date();
 const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
@@ -12,7 +11,6 @@ const thirtyDaysAgo = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
 const currentMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 const currentYear = new Date(now.getFullYear(), 0, 1);
 
-// Public, non-sensitive homepage stats (safe to expose without auth)
 const getPublicHomepageStats = async () => {
   const [
     totalCompletedRides,
@@ -42,7 +40,6 @@ const getPublicHomepageStats = async () => {
   };
 };
 
-// Dashboard Stats - Overview of all key metrics
 const getDashboardStats = async () => {
   const [
     totalUsers,
@@ -90,7 +87,6 @@ const getDashboardStats = async () => {
   };
 };
 
-// User Statistics
 const getUserStats = async () => {
   const [
     totalUsers,
@@ -144,8 +140,6 @@ const getUserStats = async () => {
     unverifiedUsers,
   };
 };
-
-// Driver Statistics
 const getDriverStats = async () => {
   const [
     totalDrivers,
@@ -237,7 +231,6 @@ const getDriverStats = async () => {
   };
 };
 
-// Ride Statistics
 const getRideStats = async () => {
   const [
     totalRides,
@@ -332,7 +325,7 @@ const getRideStats = async () => {
                   "$timestamps.requestedAt",
                 ],
               },
-              1000 * 60, // Convert to minutes
+              1000 * 60,
             ],
           },
         },
@@ -363,7 +356,6 @@ const getRideStats = async () => {
   };
 };
 
-// Revenue Statistics
 const getRevenueStats = async () => {
   const [
     totalRevenue,

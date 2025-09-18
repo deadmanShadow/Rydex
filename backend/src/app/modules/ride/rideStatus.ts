@@ -1,4 +1,3 @@
-// rideStatus.ts
 import { RideStatus } from "./ride.interface";
 
 export const ACTIVE_RIDE_STATUSES = [
@@ -27,7 +26,7 @@ export const getFullRideStatusFlow = (): string => {
   while (current && !visited.has(current)) {
     flow.push(current);
     visited.add(current);
-    current = rideStatusFlow[current]?.[0]; // Only follow the primary path
+    current = rideStatusFlow[current]?.[0];
   }
 
   return flow.join(" → ");

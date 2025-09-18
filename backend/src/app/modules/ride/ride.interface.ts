@@ -17,7 +17,7 @@ export enum RideStatus {
 
 export interface IRideLocation {
   type: "Point";
-  coordinates: [number, number]; // GeoJSON: [lng, lat]
+  coordinates: [number, number];
   name: string;
 }
 

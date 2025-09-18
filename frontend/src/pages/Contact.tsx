@@ -1,10 +1,10 @@
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
+import { Textarea } from "@/components/ui/textarea";
+import React, { useState } from "react";
+import { toast } from "sonner";
 
 interface ContactProps {
   title?: string;
@@ -15,11 +15,11 @@ interface ContactProps {
 }
 
 export default function Contact({
-  title = "Contact Us",
-  description = "We are available for questions, feedback, or collaboration opportunities. Let us know how we can help!",
+  title = "Contact with Rydex",
+  description = "We're here for any questions, feedback, or collaboration opportunities. Reach out and let us know how we can assist!",
   phone = "(123) 34567890",
-  email = "email@example.com",
-  web = { label: "shadcnblocks.com", url: "https://shadcnblocks.com" },
+  email = "rydex@gmail.com",
+  web = { label: "rydex.com", url: "https://www.rydex.com" },
 }: ContactProps) {
   const [loading, setLoading] = useState(false);
 

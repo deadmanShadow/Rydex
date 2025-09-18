@@ -1,14 +1,11 @@
-// getSidebarItems.ts
 import { role } from "@/constants/role";
 import { adminSidebarItems } from "@/routes/AdminSidebarItems";
 import { driverSidebarItems } from "@/routes/DriverSidebarItems";
 import { riderSidebarItems } from "@/routes/RideSidebarItems";
 
-// import { adminSidebarItems } from "@/routes/AdminSidebarItems";
 import type { TRole } from "@/types";
 
 export const getSidebarItems = (userRole?: TRole) => {
-  // console.log(userRole);
   switch (userRole) {
     case role.superAdmin:
       return [...adminSidebarItems];

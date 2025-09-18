@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -5,13 +6,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import {
-  Settings as SettingsIcon,
   Bell,
-  Shield,
-  Palette,
   Globe,
+  Palette,
+  Settings as SettingsIcon,
+  Shield,
 } from "lucide-react";
 
 export default function Settings() {

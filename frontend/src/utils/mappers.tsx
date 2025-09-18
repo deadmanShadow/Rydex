@@ -1,6 +1,5 @@
-// utils/mappers.ts
-import { Car, Bike, ShieldCheck, UserCog, Ban } from "lucide-react";
 import { IsActive, Role } from "@/types";
+import { Ban, Bike, Car, ShieldCheck, UserCog } from "lucide-react";
 import type { JSX } from "react";
 
 export const roleMapper: Record<

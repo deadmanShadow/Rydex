@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Loader2, Users, Car, MapPin, Award } from "lucide-react";
-import { motion, animate } from "framer-motion";
 import { useGetPublicStatsQuery } from "@/redux/features/admin/stats.api";
+import { animate, motion } from "framer-motion";
+import { Award, Car, Loader2, MapPin, Users } from "lucide-react";
 import type { JSX } from "react";
 import { useEffect, useMemo, useState } from "react";
 
@@ -110,10 +110,10 @@ export default function PublicStats() {
           <span>Trusted by riders and drivers</span>
         </div>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mt-3 mb-2">
-          RideExpress in Numbers
+          Rydex in Stats
         </h2>
         <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base lg:text-lg">
-          Real-time highlights that showcase our growing community.
+          Live updates that highlight the growth of our community.
         </p>
       </div>
 

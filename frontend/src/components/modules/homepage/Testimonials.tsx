@@ -1,27 +1,27 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
 
 const testimonials = [
   {
-    name: "Aisha Rahman",
-    role: "University Student",
+    name: "Rashid Khan",
+    role: "Project Manager",
     content:
-      "Booking a ride to campus is effortless. Safety features and verified drivers give me peace of mind.",
-    initials: "AR",
+      "Rydex has completely transformed my daily commute. It's fast, affordable, and I always feel safe during my ride.",
+    initials: "RK",
   },
   {
-    name: "Tanvir Ahmed",
+    name: "Sara Alam",
     role: "Software Engineer",
     content:
-      "I save time and money on daily commutes. The experience feels polished and reliable.",
-    initials: "TA",
+      "I love how easy it is to book a ride. The real-time tracking and reliable drivers make every journey smooth and stress-free.",
+    initials: "SA",
   },
   {
-    name: "Nusrat Jahan",
-    role: "Operations Manager",
+    name: "Imran Hossain",
+    role: "DevOps Engineer",
     content:
-      "Our team uses it for office transport—transparent pricing, punctual drivers, and great support.",
-    initials: "NJ",
+      "Rydex is my go-to for business trips. Transparent pricing, great support, and punctual drivers make it a top choice.",
+    initials: "IH",
   },
 ];
 
@@ -32,13 +32,13 @@ export default function Testimonials() {
         <div className="text-center mb-10 sm:mb-12 lg:mb-14">
           <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs sm:text-sm text-muted-foreground bg-background">
             <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-            <span>Loved by riders</span>
+            <span>Loved by Riders</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-3 mb-2">
             Testimonials
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
-            Real stories from people who rely on RideExpress every day.
+            Genuine stories from those who trust Rydex for their daily journeys.
           </p>
         </div>
 

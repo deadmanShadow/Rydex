@@ -1,6 +1,6 @@
-import clsx from "clsx";
-import { useMemo, useState } from "react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -9,23 +9,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { formatDate } from "@/lib/utils";
+import { type IRide } from "@/types";
+import clsx from "clsx";
 import {
   ArrowUpDown,
-  Loader2,
-  RefreshCw,
-  Search,
-  MapPin,
-  Car,
   Bike,
+  Car,
   DollarSign,
   Eye,
+  Loader2,
+  MapPin,
+  RefreshCw,
+  Search,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { type IRide } from "@/types";
-import { formatDate } from "@/lib/utils";
+import { useMemo, useState } from "react";
 
-// Mock data for now - replace with actual API call
 const mockRides: IRide[] = [
   {
     _id: "1",

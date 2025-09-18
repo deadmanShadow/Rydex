@@ -1,9 +1,16 @@
-import React, { useState, useCallback, useMemo } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import {
   Select,
   SelectContent,
@@ -11,6 +18,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
   TableBody,
@@ -19,44 +27,36 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-  PaginationEllipsis,
-} from "@/components/ui/pagination";
 import { useGetDriverRideHistoryQuery } from "@/redux/features/driver/driver.api";
 import {
-  MapPin,
-  Car,
-  Bike,
-  Clock,
-  Calendar,
-  Search,
-  Filter,
-  RefreshCw,
-  ChevronDown,
-  User,
-  Phone,
-  Mail,
-  Navigation,
-  Flag,
-  CheckCircle,
-  XCircle,
-  AlertCircle,
-  Loader2,
-} from "lucide-react";
-import { FaBangladeshiTakaSign as TakaIcon } from "react-icons/fa6";
-import {
-  type IRide,
-  type RideStatus,
-  type IUser,
   type IDriverRideHistoryQuery,
+  type IRide,
+  type IUser,
+  type RideStatus,
 } from "@/types";
 import { format } from "date-fns";
+import {
+  AlertCircle,
+  Bike,
+  Calendar,
+  Car,
+  CheckCircle,
+  ChevronDown,
+  Clock,
+  Filter,
+  Flag,
+  Loader2,
+  Mail,
+  MapPin,
+  Navigation,
+  Phone,
+  RefreshCw,
+  Search,
+  User,
+  XCircle,
+} from "lucide-react";
+import React, { useCallback, useMemo, useState } from "react";
+import { FaBangladeshiTakaSign as TakaIcon } from "react-icons/fa6";
 
 // Type for populated ride data
 interface IPopulatedRide extends Omit<IRide, "riderId"> {

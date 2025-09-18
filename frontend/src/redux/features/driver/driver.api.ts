@@ -1,16 +1,15 @@
-// driver.api.ts
 import { baseApi } from "@/redux/baseApi";
 import type {
-  IResponse,
+  IAvailability,
   IDriver,
   IDriverApplication,
-  IRide,
-  IAvailability,
-  IDriverProfile,
-  IUpdateMyDriverProfile,
   IDriverEarnings,
+  IDriverProfile,
   IDriverRideHistoryQuery,
   IDriverRideHistoryResponse,
+  IResponse,
+  IRide,
+  IUpdateMyDriverProfile,
 } from "@/types";
 
 export const driverApi = baseApi.injectEndpoints({

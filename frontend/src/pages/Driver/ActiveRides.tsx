@@ -1,30 +1,30 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useMemo, useEffect } from "react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import {
   useGetAllRideQuery,
   useGetDriverMyProfileQuery,
   useUpdateMyProfileMutation,
 } from "@/redux/features/driver/driver.api";
 import { useUpdateRideStatusMutation } from "@/redux/features/ride/ride.api";
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { type IRide, type RideStatus } from "@/types";
 import {
-  MapPin,
-  Car,
+  AlertCircle,
   Bike,
+  Calendar,
+  Car,
   CheckCircle,
   Clock,
-  Navigation,
   Flag,
-  AlertCircle,
+  MapPin,
+  Navigation,
   RefreshCw,
-  Calendar,
 } from "lucide-react";
+import React, { useEffect, useMemo } from "react";
 import { FaBangladeshiTakaSign as TakaIcon } from "react-icons/fa6";
 import { toast } from "sonner";
-import { type IRide, type RideStatus } from "@/types";
 
 const statusConfig: Record<
   RideStatus,
@@ -121,16 +121,6 @@ export default function ActiveRides() {
   const { data: driverProfile, refetch: refetchDriver } =
     useGetDriverMyProfileQuery();
   const { data: me } = useUserInfoQuery();
-
-  // Filter rides to show only active ones (not REQUESTED or REJECTED)
-  // const activeRides = useMemo(() => {
-  //   return allRides.filter(
-  //     (ride) =>
-  //       ride.status !== "REQUESTED" &&
-  //       ride.status !== "REJECTED" &&
-  //       ride.status !== "CANCELLED"
-  //   );
-  // }, [allRides]);
 
   const activeRides = useMemo(() => {
     const userId = me?.data?._id;

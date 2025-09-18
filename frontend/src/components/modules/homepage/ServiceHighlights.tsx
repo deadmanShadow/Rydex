@@ -1,13 +1,13 @@
+import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import {
-  ShieldCheck,
-  Clock,
-  Car,
-  CreditCard,
   BellRing,
+  Car,
+  Clock,
+  CreditCard,
   Globe,
+  ShieldCheck,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
   {
@@ -49,13 +49,13 @@ export default function ServiceHighlights() {
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 lg:mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs sm:text-sm text-muted-foreground bg-background">
             <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-            <span>Why RideExpress</span>
+            <span>Why Rydex?</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-3 mb-2">
-            Service Highlights
+            Key Features of Our Service
           </h2>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg">
-            What makes RideExpress the smarter way to move around the city.
+            Why Rydex is the smarter choice for navigating the city.
           </p>
         </div>
 

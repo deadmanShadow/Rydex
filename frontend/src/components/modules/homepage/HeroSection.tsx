@@ -30,7 +30,7 @@ export default function HeroSection() {
   };
 
   const primaryCtaLabel = !userRole
-    ? "Join RideExpress"
+    ? "Join Rydex"
     : userRole === role.rider
     ? "Book a ride"
     : userRole === role.driver
@@ -72,17 +72,17 @@ export default function HeroSection() {
             <div className="flex justify-center lg:justify-start">
               <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs sm:text-sm text-muted-foreground bg-background dark:border-input">
                 <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-                <span>Smarter, safer city rides</span>
+                <span>Smarter, more secure rides around the city.</span>
               </div>
             </div>
 
             <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Move freely across the city with confidence
+              Navigate the city effortlessly, wherever you go.
             </h1>
             <p className="text-balance text-base text-muted-foreground sm:text-lg">
-              RideExpress connects riders and drivers with real-time matching,
-              transparent pricing, and a delightful experience tailored for both
-              light and dark mode.
+              Rydex brings riders and drivers together with instant matching,
+              clear pricing, and a seamless experience designed for both light
+              and dark modes.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 lg:justify-start">
@@ -106,7 +106,7 @@ export default function HeroSection() {
             <div className="aspect-[5/4] w-full overflow-hidden rounded-2xl border bg-muted/30 shadow-sm dark:border-input">
               <img
                 src={mobileImg}
-                alt="RideExpress app preview"
+                alt="Rydex app preview"
                 className="size-full object-cover"
                 loading="eager"
               />
@@ -116,7 +116,7 @@ export default function HeroSection() {
               <div className="flex items-center gap-3">
                 <span className="inline-flex size-2 rounded-full bg-emerald-500" />
                 <span className="text-muted-foreground">
-                  Live drivers nearby
+                  Nearby drivers ready.
                 </span>
               </div>
             </div>

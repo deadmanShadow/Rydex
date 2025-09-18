@@ -1,10 +1,8 @@
-// user.types.ts
 export interface IAuthProvider {
   provider: "google" | "credentials";
   providerId: string;
 }
 
-// ✅ Role fixed with const assertion
 export const Role = {
   SUPER_ADMIN: "SUPER_ADMIN",
   ADMIN: "ADMIN",
@@ -14,7 +12,6 @@ export const Role = {
 
 export type Role = (typeof Role)[keyof typeof Role];
 
-// ✅ IsActive already correct, just kept same style
 export const IsActive = {
   ACTIVE: "ACTIVE",
   SUSPENDED: "SUSPENDED",
@@ -32,7 +29,7 @@ export interface IUser {
   phone?: string;
   address?: string;
   auths: IAuthProvider[];
-  role: Role; // uses our new Role type
+  role: Role;
   isDeleted?: boolean;
   isActive?: IsActive;
   isVerified?: boolean;

@@ -3,9 +3,6 @@ import AllRides from "@/pages/Admin/AllRides";
 import AllUser from "@/pages/Admin/AllUser";
 import Analytics from "@/pages/Admin/Analytics";
 import type { ISidebarItem } from "@/types";
-// import { lazy } from "react";
-
-// const Analytics = lazy(() => import("@/pages/Admin/Analytics"));
 
 export const adminSidebarItems: ISidebarItem[] = [
   {
@@ -33,14 +30,4 @@ export const adminSidebarItems: ISidebarItem[] = [
       },
     ],
   },
-  // {
-  //   title: "Tour Management",
-  //   items: [
-  //     {
-  //       title: "Add Tour ",
-  //       url: "/admin/driver-request",
-  //       component: DriverRequest,
-  //     },
-  //   ],
-  // },
 ];

@@ -1,8 +1,13 @@
-import React, { useState, useMemo } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -19,40 +24,34 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Search,
-  Filter,
-  MoreHorizontal,
-  Car,
-  Bike,
-  Truck,
-  CheckCircle,
-  XCircle,
-  Clock,
-  Loader2,
-  RefreshCw,
-  AlertTriangle,
-} from "lucide-react";
-import { toast } from "sonner";
-import {
   useGetAllDriversQuery,
   useUpdateDriverStatusMutation,
 } from "@/redux/features/admin/admin.api";
 import {
-  type IDriver,
-  type DriverStatus,
   type Availability,
-  DRIVER_STATUS,
   AVAILABILITY,
+  DRIVER_STATUS,
+  type DriverStatus,
+  type IDriver,
   VEHICLE_TYPE,
 } from "@/types/driver.type";
+import {
+  AlertTriangle,
+  Bike,
+  Car,
+  CheckCircle,
+  Clock,
+  Filter,
+  Loader2,
+  MoreHorizontal,
+  RefreshCw,
+  Search,
+  Truck,
+  XCircle,
+} from "lucide-react";
+import React, { useMemo, useState } from "react";
+import { toast } from "sonner";
 
-// Use the existing types from the types file
 type Driver = IDriver;
 
 interface FilterState {
@@ -67,10 +66,7 @@ interface SortConfig {
   direction: "asc" | "desc";
 }
 
-// API integration - no more mock data needed
-
 const AllDriver: React.FC = () => {
-  // API integration
   const emptyParams = {} as const;
   const {
     data: driversResponse,
@@ -81,7 +77,6 @@ const AllDriver: React.FC = () => {
   const [updateDriverStatus, { isLoading: isUpdating }] =
     useUpdateDriverStatusMutation();
 
-  // State management
   const [filters, setFilters] = useState<FilterState>({
     search: "",
     status: "all",
@@ -91,7 +86,6 @@ const AllDriver: React.FC = () => {
 
   const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
 
-  // Extract drivers from API response (normalized to array)
   const rawDrivers = (driversResponse?.data ?? null) as unknown;
   const drivers: Driver[] = Array.isArray(rawDrivers)
     ? (rawDrivers as Driver[])
@@ -133,7 +127,6 @@ const AllDriver: React.FC = () => {
       );
     });
 
-    // Sort drivers
     if (sortConfig) {
       const sorted = [...filtered].sort((a: Driver, b: Driver) => {
         const aValue = a[sortConfig.key];
@@ -150,7 +143,6 @@ const AllDriver: React.FC = () => {
     return filtered;
   }, [drivers, filters, sortConfig]);
 
-  // Handlers
   const handleSort = (key: keyof Driver) => {
     setSortConfig((current) => {
       if (current?.key === key) {
@@ -239,13 +231,6 @@ const AllDriver: React.FC = () => {
       day: "numeric",
     });
   };
-
-  // const formatCurrency = (amount: number) => {
-  //   return new Intl.NumberFormat("en-US", {
-  //     style: "currency",
-  //     currency: "USD",
-  //   }).format(amount);
-  // };
 
   const formatCurrency = (amount: number) => {
     return `৳${new Intl.NumberFormat("en-US", {

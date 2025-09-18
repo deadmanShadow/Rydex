@@ -1,6 +1,6 @@
 import Logo from "@/assets/icons/Logo";
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { role as ROLE } from "@/constants/role";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 
 export default function Footer() {
   const { data } = useUserInfoQuery(undefined);
@@ -61,12 +61,11 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               {/* <Logo /> */}
               <Logo size={60} />
-              <p className="text-foreground font-medium">Ride Express</p>
+              <p className="text-foreground font-medium">Rydex</p>
             </div>
             <p className="mt-4 max-w-sm text-muted-foreground">
-              Reliable rides for everyone. Transparent pricing, verified
-              drivers, and real-time tracking—built for speed, safety, and
-              comfort.
+              Dependable rides for all. Clear pricing, verified drivers, and
+              live tracking—designed for speed, safety, and comfort.
             </p>
           </div>
 
@@ -137,7 +136,7 @@ export default function Footer() {
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t pt-6">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} RideExpress. All rights reserved.
+            © {new Date().getFullYear()} Rydex. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-muted-foreground">
             <a href="/terms" className="hover:text-foreground">

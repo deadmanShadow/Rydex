@@ -1,4 +1,3 @@
-// types.ts
 export interface IPublicStats {
   totalCompletedRides: number;
   totalApprovedDrivers: number;

@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Smartphone, Users, Map, Car } from "lucide-react";
+import { Car, Map, Smartphone, Users } from "lucide-react";
 
-import Img from "../../../assets/images/mobile-app-location-digital-art.jpg";
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { role as ROLE } from "@/constants/role";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { adminSidebarItems } from "@/routes/AdminSidebarItems";
+import Img from "../../../assets/images/mobile-app-location-digital-art.jpg";
 
 const steps = [
   {
@@ -117,13 +117,14 @@ export default function HowItWorks() {
         <div className="text-center mb-10 sm:mb-12 lg:mb-14">
           <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs sm:text-sm text-muted-foreground bg-background">
             <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-            <span>Simple, reliable, fast</span>
+            <span>Effortless, Dependable, Quick.</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-3 mb-2">
             How it works
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base lg:text-lg">
-            From booking to arrival, every step is simple and reliable.
+            From booking to arrival, experience seamless and dependable service
+            at every step.
           </p>
         </div>
 
@@ -141,10 +142,10 @@ export default function HowItWorks() {
             />
             <div className="absolute inset-0 bg-black/55 flex flex-col justify-center items-center text-center p-6">
               <h3 className="text-2xl font-bold text-white">
-                Book a ride in seconds
+                Reserve a ride in just a few seconds.
               </h3>
               <p className="text-white/85 mt-2 max-w-sm">
-                Set your pickup, confirm the fare, and you’re ready to go.
+                Choose your pickup, confirm the fare, and you're all set to go.
               </p>
               {renderCTA()}
             </div>

@@ -16,11 +16,11 @@ const GoogleCallback = () => {
       return;
     }
 
-    const token = params.get("token"); // backend sends JWT if login is successful
+    const token = params.get("token");
     if (token) {
       localStorage.setItem("token", token);
       toast.success("Logged in successfully");
-      navigate("/"); // dashboard
+      navigate("/");
     } else {
       toast.error("Something went wrong with Google login");
       navigate("/login");

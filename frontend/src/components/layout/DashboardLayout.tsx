@@ -13,7 +13,6 @@ export default function DashboardLayout() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        {/* <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4"> */}
         <header className="relative flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator
@@ -21,7 +20,6 @@ export default function DashboardLayout() {
             className="mr-2 data-[orientation=vertical]:h-4"
           />
 
-          {/* mobile centered logo */}
           <div className="absolute left-1/2 -translate-x-1/2 block md:hidden">
             <Link to="/">
               <Logo />

@@ -113,14 +113,12 @@ export default function EarningsDashboard({
 }: EarningsDashboardProps) {
   const [timeFilter, setTimeFilter] = useState<TimeFilter>("monthly");
 
-  // Process data for different chart types
   const processedData = useMemo<IEarningsGroups>(() => {
     if (!earningsData?.rides)
       return { daily: [], weekly: [], monthly: [], vehicleTypeData: [] };
 
     const rides = earningsData.rides;
 
-    // Group by date for daily earnings
     const dailyEarnings = rides.reduce((acc: any, ride) => {
       const date = new Date(ride.timestamps.completedAt).toLocaleDateString();
       if (!acc[date]) {
@@ -131,7 +129,6 @@ export default function EarningsDashboard({
       return acc;
     }, {});
 
-    // Group by week
     const weeklyEarnings = rides.reduce((acc: any, ride) => {
       const date = new Date(ride.timestamps.completedAt);
       const weekStart = new Date(date);
@@ -146,7 +143,6 @@ export default function EarningsDashboard({
       return acc;
     }, {});
 
-    // Group by month
     const monthlyEarnings = rides.reduce((acc: any, ride) => {
       const date = new Date(ride.timestamps.completedAt);
       const monthKey = date.toLocaleDateString("en-US", {
@@ -162,7 +158,6 @@ export default function EarningsDashboard({
       return acc;
     }, {});
 
-    // Vehicle type distribution
     const vehicleTypeData = rides.reduce((acc: any, ride) => {
       const existing = acc.find((item: any) => item.name === ride.vehicleType);
       if (existing) {
@@ -220,7 +215,6 @@ export default function EarningsDashboard({
   const averageEarningsPerRide =
     totalRides > 0 ? totalEarnings / totalRides : 0;
 
-  // Calculate growth metrics
   const growthMetrics = useMemo(() => {
     if (currentData.length < 2) return { earningsGrowth: 0, ridesGrowth: 0 };
 

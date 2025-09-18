@@ -1,9 +1,9 @@
 // auth.api.ts
 import { baseApi } from "@/redux/baseApi";
 import type {
-  IResponse,
-  IDriver,
   DriverStatus,
+  IDriver,
+  IResponse,
   IResponseWithMeta,
 } from "@/types";
 
@@ -33,9 +33,6 @@ export const adminApi = baseApi.injectEndpoints({
           IDriver[] | { data: IDriver[]; meta?: unknown }
         >
       ) => {
-        // Handle both shapes:
-        // 1) { data: IDriver[], meta }
-        // 2) { data: { data: IDriver[], meta }, meta? }
         const rawData = response.data as unknown;
         if (Array.isArray(rawData)) {
           return {

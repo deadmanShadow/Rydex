@@ -1,23 +1,23 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import {
   ArrowLeft,
-  MapPin,
-  Car,
   Bike,
-  DollarSign,
-  Clock,
-  User,
-  Phone,
-  Mail,
   Calendar,
+  Car,
+  Clock,
+  DollarSign,
+  Mail,
+  MapPin,
   Navigation,
+  Phone,
   Route,
+  User,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 // import { useLazyGetSingleRideRiderQuery } from "@/redux/features/ride/ride.api";
 import type { IRide } from "@/types";
 
@@ -406,7 +406,7 @@ export default function RideDetails() {
                     <div className="flex items-center gap-1">
                       <Mail className="h-3 w-3" />
                       <span className="text-muted-foreground">
-                        driver@rideexpress.com
+                        driver@rydex.com
                       </span>
                     </div>
                   </div>

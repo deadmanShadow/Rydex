@@ -1,6 +1,11 @@
-import clsx from "clsx";
-import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -12,8 +17,11 @@ import {
 import {
   useGetAllUsersQuery,
   useUpdateUserMutation,
+  useUserInfoQuery,
 } from "@/redux/features/auth/auth.api";
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { IsActive, type IUser, Role } from "@/types";
+import { roleMapper, statusMapper } from "@/utils/mappers";
+import clsx from "clsx";
 import {
   ArrowUpDown,
   ChevronLeft,
@@ -22,15 +30,7 @@ import {
   RefreshCw,
   Search,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { type IUser, Role, IsActive } from "@/types";
-import { roleMapper, statusMapper } from "@/utils/mappers";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { useMemo, useState } from "react";
 
 export default function AllUser() {
   const [filters, setFilters] = useState<{
@@ -48,13 +48,11 @@ export default function AllUser() {
       page: filters.page,
       limit: filters.limit,
     };
-    // Backend QueryBuilder often uses `searchTerm`
+
     if (filters.search) params.searchTerm = filters.search;
     if (filters.role !== "all") params.role = filters.role;
     if (filters.isActive !== "all") params.isActive = filters.isActive;
-    // Remove sorting from API call - use only client-side sorting for immediate response
-    // if (filters.sortBy) params.sortBy = filters.sortBy;
-    // if (filters.sortOrder) params.sortOrder = filters.sortOrder;
+
     return params;
   }, [
     filters.page,
@@ -79,8 +77,6 @@ export default function AllUser() {
     limit: filters.limit,
     total: users.length,
   };
-
-  // console.log(users);
 
   const totalItems = meta.total ?? users.length;
   const pageFromMeta = meta.page ?? filters.page;
@@ -143,30 +139,30 @@ export default function AllUser() {
 
   // Client-side sorting (mirrors AllDriver behavior; server-side also supported via params)
   const sortedUsers = useMemo(() => {
-    console.log('sortedUsers recalculating:', {
+    console.log("sortedUsers recalculating:", {
       sortBy: filters.sortBy,
       sortOrder: filters.sortOrder,
       filteredUsersLength: filteredUsers.length,
-      hasSortBy: !!filters.sortBy
+      hasSortBy: !!filters.sortBy,
     });
-    
+
     if (!filters.sortBy) return filteredUsers;
-    
+
     const sortKey = filters.sortBy as keyof IUser;
     const direction = filters.sortOrder === "asc" ? 1 : -1;
-    
+
     // Create a copy to avoid mutating the original array
     const copy = [...filteredUsers];
-    
+
     copy.sort((a, b) => {
       const aVal = a[sortKey];
       const bVal = b[sortKey];
-      
+
       // Handle null/undefined values
       if (aVal == null && bVal == null) return 0;
       if (aVal == null) return 1 * direction;
       if (bVal == null) return -1 * direction;
-      
+
       // Handle date sorting
       if (sortKey === "createdAt") {
         const aNum = new Date(aVal as string).getTime();
@@ -175,17 +171,17 @@ export default function AllUser() {
         if (aNum > bNum) return 1 * direction;
         return 0;
       }
-      
+
       // Handle string sorting
       const aStr = String(aVal).toLowerCase();
       const bStr = String(bVal).toLowerCase();
-      
+
       if (aStr < bStr) return -1 * direction;
       if (aStr > bStr) return 1 * direction;
       return 0;
     });
-    
-    console.log('Sorting completed. Result length:', copy.length);
+
+    console.log("Sorting completed. Result length:", copy.length);
     return copy;
   }, [filteredUsers, filters.sortBy, filters.sortOrder]);
 

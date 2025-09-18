@@ -1,31 +1,33 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle2, Shield, Users } from "lucide-react";
+import { MapPin, Smartphone, UserCheck } from "lucide-react";
 
 export default function Features() {
   const features = [
     {
-      title: "Secure & Reliable",
+      title: "Effortless Booking",
       description:
-        "Your data is encrypted and protected with enterprise-grade security.",
-      icon: Shield,
+        "Book your ride in just a few taps, with transparent pricing and instant confirmations.",
+      icon: Smartphone,
     },
     {
-      title: "Collaborative",
+      title: "Real-Time Tracking",
       description:
-        "Work seamlessly with your team in real-time with shared access.",
-      icon: Users,
+        "Track your ride in real time, from pickup to drop-off, for complete peace of mind.",
+      icon: MapPin,
     },
     {
-      title: "User Friendly",
+      title: "Verified Drivers",
       description:
-        "Minimal design with intuitive navigation for a better experience.",
-      icon: CheckCircle2,
+        "All drivers are thoroughly vetted and verified to ensure safety and reliability.",
+      icon: UserCheck,
     },
-  ];   
+  ];
 
   return (
     <section className="py-16 px-4 container mx-auto">
-      <h1 className="text-4xl font-bold text-center mb-12">Features</h1>
+      <h1 className="text-4xl font-bold text-center mb-12">
+        Our Rydex Features
+      </h1>
       <div className="grid md:grid-cols-3 gap-6">
         {features.map((feature, i) => (
           <Card

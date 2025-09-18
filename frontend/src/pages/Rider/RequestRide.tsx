@@ -1,13 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate } from "react-router";
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useRideRequestMutation } from "@/redux/features/ride/ride.api";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
+import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -16,7 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -149,7 +149,7 @@ export default function RequestRide() {
           )}&format=json&addressdetails=1&limit=6&countrycodes=bd&accept-language=bn,en`;
           const res = await fetch(url, {
             headers: {
-              "User-Agent": "RideExpress-Frontend/1.0 (Educational)",
+              "User-Agent": "Rydex-Frontend/1.0 (Educational)",
               Referer: window.location.origin,
             },
           });
@@ -236,7 +236,7 @@ export default function RequestRide() {
                       <FormControl>
                         <div className="space-y-2">
                           <Input
-                            placeholder="e.g. Dhanmondi 27, Dhaka"
+                            placeholder="e.g. Shantinagar, Dhaka"
                             value={field.value}
                             onChange={(e) => {
                               field.onChange(e);
@@ -290,7 +290,7 @@ export default function RequestRide() {
                       <FormControl>
                         <div className="space-y-2">
                           <Input
-                            placeholder="e.g. Shahbagh, Dhaka"
+                            placeholder="e.g. Mirpur 12, Dhaka"
                             value={field.value}
                             onChange={(e) => {
                               field.onChange(e);

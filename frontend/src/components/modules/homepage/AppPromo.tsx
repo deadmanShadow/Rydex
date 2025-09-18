@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button";
 import mobileImg from "@/assets/images/mobile-app-location-digital-art.jpg";
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
+import { Button } from "@/components/ui/button";
 import { role as ROLE } from "@/constants/role";
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { adminSidebarItems } from "@/routes/AdminSidebarItems";
 
 export default function AppPromo() {
@@ -80,21 +80,27 @@ export default function AppPromo() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs sm:text-sm text-muted-foreground bg-background">
             <span className="inline-flex h-1.5 w-1.5 rounded-full bg-primary" />
-            <span>Start in your browser</span>
+            <span>Launch directly from your browser.</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-3">
-            Book rides effortlessly online
+            Book your rides easily online.
           </h2>
           <p className="mt-3 text-muted-foreground max-w-prose">
-            Plan trips, confirm fares, and track your ride from the web. No app
-            needed.
+            Plan your trips, confirm fares, and track your ride all from the
+            web. No app required.
           </p>
           {renderCTA()}
           <ul className="mt-6 grid grid-cols-2 gap-3 text-sm">
-            <li className="text-muted-foreground">• One-tap web booking</li>
-            <li className="text-muted-foreground">• Live driver tracking</li>
-            <li className="text-muted-foreground">• Transparent pricing</li>
-            <li className="text-muted-foreground">• 24/7 support</li>
+            <li className="text-muted-foreground">• Quick and easy booking</li>
+            <li className="text-muted-foreground">
+              • Real-time driver location
+            </li>
+            <li className="text-muted-foreground">
+              • Clear and upfront pricing
+            </li>
+            <li className="text-muted-foreground">
+              • Round-the-clock assistance
+            </li>
           </ul>
         </div>
         <div className="relative">
@@ -104,7 +110,7 @@ export default function AppPromo() {
             className="rounded-xl shadow-xl w-full object-cover"
           />
           <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-full shadow-md">
-            Fast & Secure
+            Secure & Reliable
           </div>
         </div>
       </div>

@@ -17,49 +17,49 @@ interface Faq1Props {
 }
 
 export default function Faq1({
-  heading = "Frequently asked questions",
+  heading = "Frequently Asked Questions",
   items = [
     {
       id: "faq-1",
-      question: "How secure is the platform?",
+      question: "How do I book a ride?",
       answer:
-        "We use end-to-end encryption and follow best security practices to keep your data safe",
+        "Booking a ride is simple! Just enter your pickup and destination, confirm the fare, and you're ready to go.",
     },
     {
       id: "faq-2",
-      question: "Can I collaborate with my team?",
+      question: "How are drivers verified?",
       answer:
-        "Yes, our platform supports team collaboration with role-based permissions.",
+        "All drivers undergo a thorough background check, including driving history and vehicle inspection, to ensure safety and reliability.",
     },
     {
       id: "faq-3",
-      question: "Do you offer customer support?",
+      question: "What happens if I encounter an issue during my ride?",
       answer:
-        "Absolutely! Our support team is available 24/7 via email and live chat.",
+        "Our support team is available 24/7. You can contact us through the app for quick assistance in case of any issues during your ride.",
     },
     {
       id: "faq-4",
-      question: "What are the benefits of a FAQ?",
+      question: "How can I track my ride in real time?",
       answer:
-        "The benefits of a FAQ include providing quick and easy access to information, reducing the number of support requests, and improving the overall user experience.",
+        "Once your ride is confirmed, you can track your driver’s location in real time through the app, ensuring you know exactly when they’ll arrive.",
     },
     {
       id: "faq-5",
-      question: "How should I organize my FAQ?",
+      question: "Are the rides affordable?",
       answer:
-        "You should organize your FAQ in a logical manner, grouping related questions together and ordering them from most basic to more advanced topics.",
+        "Yes! We offer transparent pricing with upfront fare details. No hidden fees, so you know what to expect before you ride.",
     },
     {
       id: "faq-6",
-      question: "How long should FAQ answers be?",
+      question: "Can I cancel a ride after booking?",
       answer:
-        "FAQ answers should be concise and to the point, typically a few sentences or a short paragraph is sufficient for most questions.",
+        "You can cancel your ride anytime before the driver arrives, with a small cancellation fee if the driver is already en route.",
     },
     {
       id: "faq-7",
-      question: "Should I include links in my FAQ?",
+      question: "How do I become a driver?",
       answer:
-        "Yes, including links to more detailed information or related resources can be very helpful for users who want to learn more about a particular topic.",
+        "To become a driver, simply sign up through the app, submit the necessary documents, and go through a vehicle inspection and background check.",
     },
   ],
 }: Faq1Props) {
