@@ -3,7 +3,6 @@ import httpStatus from "http-status-codes";
 import { JwtPayload } from "jsonwebtoken";
 import mongoose from "mongoose";
 import AppError from "../../errorHelpers/AppError";
-
 import { Ride } from "../ride/ride.model";
 import { IUser, Role } from "../user/user.interface";
 import { User } from "../user/user.model";
@@ -29,12 +28,9 @@ const applyForDriver = async (
 
   const isUserExist = await User.findById(decodedToken.userId);
 
-  // checking is user exist or not
   if (!isUserExist) {
     throw new AppError(httpStatus.NOT_FOUND, "User not found");
   }
-
-  // checking authorized user or not
   if (isUserExist._id.toString() !== decodedToken.userId) {
     throw new AppError(
       httpStatus.FORBIDDEN,
@@ -42,15 +38,12 @@ const applyForDriver = async (
     );
   }
 
-  // checking address provided or not
   if (!isUserExist.address) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
       "Please update your address before applying as a driver."
     );
   }
-
-  // checking user already submit a driver application
   const isApplicationExist = await Driver.findOne({
     driver: decodedToken.userId,
   });
@@ -61,7 +54,6 @@ const applyForDriver = async (
     );
   }
 
-  // checking user already are in driver role
   if (isUserExist.role === Role.DRIVER) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
@@ -69,7 +61,6 @@ const applyForDriver = async (
     );
   }
 
-  // create new driver application
   const driver = await Driver.create({
     ...payload,
     userId: decodedToken.userId,
@@ -129,8 +120,6 @@ const updateDriver = async (driverId: string, driverStatus: DRIVER_STATUS) => {
 
     if (driverStatus === DRIVER_STATUS.APPROVED) {
       driver.approvedAt = new Date();
-
-      // ✅ Update the user's role to DRIVER
       await User.findByIdAndUpdate(
         driver.userId,
         { role: Role.DRIVER },
@@ -226,7 +215,6 @@ const getDriverRideHistory = async (
   user: JwtPayload,
   query: Record<string, string>
 ) => {
-  // First verify the driver exists and is approved
   const driver = await Driver.findOne({ userId: user.userId });
 
   if (!driver) {
@@ -240,7 +228,6 @@ const getDriverRideHistory = async (
     );
   }
 
-  // Create base query for rides where this driver was assigned
   const baseQuery: Record<string, any> = { driverId: user.userId };
 
   // Apply search filter if searchTerm is provided
@@ -261,7 +248,6 @@ const getDriverRideHistory = async (
     } as any;
   }
 
-  // Apply additional filters from query parameters
   const filterQuery = { ...searchQuery };
   if (query.status) {
     filterQuery.status = query.status;
@@ -270,14 +256,12 @@ const getDriverRideHistory = async (
     filterQuery.vehicleType = query.vehicleType;
   }
 
-  // Create query builder for rides where this driver was assigned
   const rideQuery = Ride.find(filterQuery)
     .populate("riderId", "name email phone")
     .sort({ createdAt: -1 });
 
   const queryBuilder = new QueryBuilder(rideQuery, query);
 
-  // Apply search, filter, sort, and pagination
   const result = await queryBuilder
     .search(["pickupLocation.name", "destinationLocation.name", "status"])
     .filter()
@@ -285,7 +269,6 @@ const getDriverRideHistory = async (
     .fields()
     .paginate();
 
-  // Get total count for the specific driver's rides with applied filters
   const totalDocuments = await Ride.countDocuments(filterQuery);
 
   const page = Number(query.page) || 1;

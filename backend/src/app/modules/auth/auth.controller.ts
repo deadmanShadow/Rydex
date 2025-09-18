@@ -88,6 +88,7 @@ const logout = catchAsync(
     });
   }
 );
+
 const googleCallbackController = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     let redirectTo = req.query.state ? (req.query.state as string) : "";
@@ -162,8 +163,8 @@ export const AuthControllers = {
   credentialsLogin,
   getNewAccessToken,
   logout,
-  googleCallbackController,
   changePassword,
   resetPassword,
   setPassword,
+  googleCallbackController,
 };

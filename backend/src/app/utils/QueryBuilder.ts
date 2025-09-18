@@ -18,7 +18,7 @@ export class QueryBuilder<T> {
       delete filter[field];
     }
 
-    this.modelQuery = this.modelQuery.find(filter); // Tour.find().find(filter)
+    this.modelQuery = this.modelQuery.find(filter);
 
     return this;
   }
@@ -30,7 +30,7 @@ export class QueryBuilder<T> {
         [field]: { $regex: searchTerm, $options: "i" },
       })),
     };
-    this.modelQuery = this.modelQuery.find(searchQuery); // Tour.find().find(filter)
+    this.modelQuery = this.modelQuery.find(searchQuery);
 
     return this;
   }

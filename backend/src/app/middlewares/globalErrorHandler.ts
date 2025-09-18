@@ -8,7 +8,6 @@ import { handleDuplicateError } from "../helpers/handleDuplicateError";
 import { handleValidationError } from "../helpers/handleValidationError";
 import { handleZodError } from "../helpers/handleZodError";
 import { TErrorSources } from "../interfaces/error.types";
-// import AppError from "../errorHelpers/AppError";
 
 export const globalErrorHandler = async (
   err: any,

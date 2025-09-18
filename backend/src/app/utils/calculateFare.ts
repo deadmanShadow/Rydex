@@ -1,4 +1,3 @@
-// utils/calculateFare.ts
 import { VEHICLE_TYPE } from "../modules/ride/ride.interface";
 
 interface FareOptions {

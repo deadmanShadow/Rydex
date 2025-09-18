@@ -24,7 +24,7 @@ const applyForDriver = catchAsync(
 const updateDriver = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const { driverId } = req.params;
-    const { driverStatus } = req.body; // ✅ FIX: use driverStatus not status
+    const { driverStatus } = req.body;
 
     const result = await DriverService.updateDriver(driverId, driverStatus);
 

@@ -1,4 +1,3 @@
-// utils/cancelledRideToday.ts
 import { RideStatus } from "../modules/ride/ride.interface";
 import { Ride } from "../modules/ride/ride.model";
 

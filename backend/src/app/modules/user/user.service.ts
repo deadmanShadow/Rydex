@@ -1,3 +1,4 @@
+// user.service.ts
 import bcryptjs from "bcryptjs";
 import httpStatus from "http-status-codes";
 import { JwtPayload } from "jsonwebtoken";
@@ -64,7 +65,7 @@ const getSingleUser = async (id: string) => {
 
 const getMe = async (userId: string) => {
   const user = await User.findById(userId);
-  // .select("-password");
+
   return {
     data: user,
   };

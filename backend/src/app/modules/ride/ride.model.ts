@@ -1,3 +1,4 @@
+// // ride.model.ts
 import { Schema, model } from "mongoose";
 import { IRide, RideStatus, VEHICLE_TYPE } from "./ride.interface";
 

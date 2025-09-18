@@ -1,8 +1,9 @@
+// ride.validation.ts
 import { z } from "zod";
 import { VEHICLE_TYPE } from "./ride.interface";
 
 const coordinatesSchema = z
-  .tuple([z.number(), z.number()])
+  .tuple([z.number(), z.number()]) // [lat, lng]
   .refine(
     ([lat, lng]) => lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180,
     {
