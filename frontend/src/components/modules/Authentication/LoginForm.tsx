@@ -15,14 +15,9 @@ import config from "@/config";
 import { cn } from "@/lib/utils";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import type { ILogin } from "@/types";
-import { Bike } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { FaRegUserCircle } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import {
-  MdAdminPanelSettings,
-  MdOutlineAdminPanelSettings,
-} from "react-icons/md";
+import { MdAdminPanelSettings } from "react-icons/md";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 
@@ -65,23 +60,12 @@ export function LoginForm({
     }
   };
 
-  const handleDemoLogin = async (
-    role: "super" | "admin" | "rider" | "driver"
-  ) => {
+  const handleDemoLogin = async (role: "super") => {
     let credentials: ILogin;
 
     switch (role) {
       case "super":
-        credentials = { email: "super@gmail.com", password: "753951Bd@" };
-        break;
-      case "admin":
-        credentials = { email: "admin1@gmail.com", password: "753951Bd@" };
-        break;
-      case "rider":
-        credentials = { email: "rider1@gmail.com", password: "753951Bd@" };
-        break;
-      case "driver":
-        credentials = { email: "driver1@gmail.com", password: "753951Bd@" };
+        credentials = { email: "super@admin.com", password: "123456" };
         break;
       default:
         return;
@@ -181,36 +165,6 @@ export function LoginForm({
         >
           <MdAdminPanelSettings />
           Login with Super Admin
-        </Button>
-
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full cursor-pointer mt-2"
-          onClick={() => handleDemoLogin("admin")}
-        >
-          <MdOutlineAdminPanelSettings />
-          Login with Admin
-        </Button>
-
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full cursor-pointer mt-2"
-          onClick={() => handleDemoLogin("rider")}
-        >
-          <FaRegUserCircle />
-          Login with Rider
-        </Button>
-
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full cursor-pointer mt-2"
-          onClick={() => handleDemoLogin("driver")}
-        >
-          <Bike />
-          Login with Driver
         </Button>
       </div>
 
