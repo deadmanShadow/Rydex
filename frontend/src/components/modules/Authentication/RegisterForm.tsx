@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "@/components/ui/button";
 import {
@@ -102,7 +103,7 @@ export function RegisterForm({
       email: "",
       password: "",
       confirmPassword: "",
-      role: "RIDER",
+      role: undefined,
     },
   });
 
@@ -111,6 +112,7 @@ export function RegisterForm({
       name: data.name,
       email: data.email,
       password: data.password,
+      role: data.role,
     };
 
     try {
@@ -127,8 +129,15 @@ export function RegisterForm({
 
       const redirectTo = roleRedirectMap[data.role] ?? "/";
       navigate(redirectTo, { replace: true });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      let message = "Something went wrong";
+
+      if (error?.data?.message) {
+        message = error.data.message;
+      }
+
+      toast.error(message);
+      form.setError("email", { message });
     }
   };
 
@@ -152,39 +161,35 @@ export function RegisterForm({
             <FormField
               control={form.control}
               name="role"
-              render={({ field }) => {
-                const selectedRole = form.watch("role");
-                return (
-                  <FormItem>
-                    <Label className="text-sm font-medium">I want to</Label>
-                    <div className="flex gap-2">
-                      <Button
-                        type="button"
-                        variant={
-                          selectedRole === "RIDER" ? "default" : "outline"
-                        }
-                        onClick={() => field.onChange("RIDER")}
-                        aria-pressed={selectedRole === "RIDER"}
-                      >
-                        <User className="w-4 h-4" />
-                        Get Rides
-                      </Button>
-                      <Button
-                        type="button"
-                        variant={
-                          selectedRole === "DRIVER" ? "default" : "outline"
-                        }
-                        onClick={() => field.onChange("DRIVER")}
-                        aria-pressed={selectedRole === "DRIVER"}
-                      >
-                        <Car className="w-4 h-4" />
-                        Drive & Earn
-                      </Button>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                );
-              }}
+              render={({ field }) => (
+                <FormItem>
+                  <Label>I want to</Label>
+                  <div className="flex gap-2">
+                    <Button
+                      type="button"
+                      variant={field.value === "RIDER" ? "default" : "outline"}
+                      onClick={() => field.onChange("RIDER")}
+                    >
+                      <User className="w-4 h-4" /> Get Rides
+                    </Button>
+                    <Button
+                      type="button"
+                      variant={field.value === "DRIVER" ? "default" : "outline"}
+                      onClick={() => field.onChange("DRIVER")}
+                    >
+                      <Car className="w-4 h-4" /> Drive & Earn
+                    </Button>
+                  </div>
+
+                  <FormMessage
+                    className={field.value ? "text-green-600" : "text-red-600"}
+                  >
+                    {field.value
+                      ? `Selected: ${field.value}`
+                      : "Please select a role"}
+                  </FormMessage>
+                </FormItem>
+              )}
             />
 
             <FormField
