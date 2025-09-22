@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { JwtPayload } from "jsonwebtoken";
-import { createNewAccessTokenWithRefreshToken } from "../../utils/userToken";
 import bcryptjs from "bcryptjs";
-import AppError from "../../errorHelpers/AppError";
-import { User } from "../user/user.model";
 import httpStatus from "http-status-codes";
+import { JwtPayload } from "jsonwebtoken";
 import { envVars } from "../../config/env";
-import { catchAsync } from "../../utils/catchAsync";
+import AppError from "../../errorHelpers/AppError";
+import { createNewAccessTokenWithRefreshToken } from "../../utils/userToken";
 import { IAuthProvider } from "../user/user.interface";
+import { User } from "../user/user.model";
 
 const getNewAccessToken = async (refreshToken: string) => {
   const newAccessToken = await createNewAccessTokenWithRefreshToken(

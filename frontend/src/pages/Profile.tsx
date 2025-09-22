@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Card,
   CardContent,
@@ -13,27 +8,32 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
-  useUserInfoQuery,
-  useUpdateUserMutation,
   useChangePasswordMutation,
   useSetPasswordMutation,
+  useUpdateUserMutation,
+  useUserInfoQuery,
 } from "@/redux/features/auth/auth.api";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Camera,
   Edit3,
-  Save,
-  X,
-  User,
-  Mail,
-  Shield,
-  Key,
   Eye,
   EyeOff,
+  Key,
   Link,
+  Mail,
+  Save,
+  Shield,
+  User,
+  X,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
 
 // Validation schemas
 const profileUpdateSchema = z.object({

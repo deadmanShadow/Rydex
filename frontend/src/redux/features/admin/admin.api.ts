@@ -1,4 +1,3 @@
-// auth.api.ts
 import { baseApi } from "@/redux/baseApi";
 import type {
   DriverStatus,

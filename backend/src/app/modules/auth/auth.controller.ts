@@ -55,7 +55,6 @@ const getNewAccessToken = catchAsync(
     const tokenInfo = await AuthServices.getNewAccessToken(
       refreshToken as string
     );
-
     setAuthCookie(res, tokenInfo);
 
     sendResponse(res, {
@@ -96,7 +95,6 @@ const googleCallbackController = catchAsync(
     if (redirectTo.startsWith("/")) {
       redirectTo = redirectTo.slice(1);
     }
-
     const user = req.user;
 
     if (!user) {
