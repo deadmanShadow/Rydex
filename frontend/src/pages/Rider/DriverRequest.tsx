@@ -44,13 +44,20 @@ const driverRequestSchema = z.object({
   vehicleModel: z.string().min(1, "Vehicle model is required"),
   licenseNumber: z.string().min(1, "License number is required"),
   vehicleNumber: z.string().min(1, "Vehicle number is required"),
-  phone: z.string().optional(),
+  phone: z
+    .string({ message: "Phone Number must be string" })
+    .regex(/^(?:\+8801\d{9}|01\d{9})$/, {
+      message:
+        "Phone number must be valid for Bangladesh. Format: +8801XXXXXXXXX or 01XXXXXXXXX",
+    })
+    .optional()
+    .or(z.literal("")),
   address: z.string().optional(),
 });
 
 export default function DriverRequest() {
   const location = useLocation();
-  const basicInfo = location.state; // { name, email, password }
+  const basicInfo = location.state;
   console.log("Driver request", basicInfo);
 
   const [applyDriver, { isLoading, isError, isSuccess }] =
@@ -75,7 +82,6 @@ export default function DriverRequest() {
     },
   });
 
-  // Prefill phone and address from profile if available
   useEffect(() => {
     const profile = userInfoResponse?.data;
     if (profile) {
@@ -99,7 +105,6 @@ export default function DriverRequest() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = async (data: any) => {
     try {
-      // Update user phone/address if provided
       const user = userInfoResponse?.data;
       if (user && (data.phone || data.address)) {
         await updateUser({

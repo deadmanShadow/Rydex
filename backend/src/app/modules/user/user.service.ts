@@ -9,7 +9,7 @@ import { IAuthProvider, IUser, Role } from "./user.interface";
 import { User } from "./user.model";
 
 const createUser = async (payload: Partial<IUser>) => {
-  const { email, password, ...rest } = payload;
+  const { email, password, role, ...rest } = payload;
   const isUserExist = await User.findOne({ email });
 
   if (isUserExist) {
@@ -31,6 +31,7 @@ const createUser = async (payload: Partial<IUser>) => {
     password: hashedPassword,
     auths: [authProvider],
     ...rest,
+    role,
   });
   return user;
 };

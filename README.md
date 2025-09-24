@@ -86,3 +86,21 @@ Rydex offers distinct, role-based experiences, each tailored with specific funct
 - **Validation:** Zod
 - **Middleware:** CORS, Cookie Parser, Express Session, Multer
 - **Utilities:** Dotenv, Day.js , HTTP Status Codes, MS
+
+### Demo Login Credentials
+
+For testing purposes, you can use the following accounts:
+
+- **Super Admin**
+
+  - Email: `super@admin.com`
+  - Password: `123456`
+
+- **Rider**
+
+  - Email: `rifat@gmail.com`
+  - Password: `Rifat123@`
+
+- **Driver**
+  - Email: `raiyan@gmail.com`
+  - Password: `Raiyan123@`

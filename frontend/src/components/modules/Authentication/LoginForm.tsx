@@ -18,7 +18,7 @@ import type { ILogin } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { MdAdminPanelSettings, MdDriveEta, MdPerson } from "react-icons/md";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -76,12 +76,18 @@ export function LoginForm({
     }
   };
 
-  const handleDemoLogin = async (role: "super") => {
+  const handleDemoLogin = async (role: "super" | "rider" | "driver") => {
     let credentials: ILogin;
 
     switch (role) {
       case "super":
         credentials = { email: "super@admin.com", password: "123456" };
+        break;
+      case "rider":
+        credentials = { email: "rifat@gmail.com", password: "Rifat123@" };
+        break;
+      case "driver":
+        credentials = { email: "raiyan@gmail.com", password: "Raiyan123@" };
         break;
       default:
         return;
@@ -177,8 +183,28 @@ export function LoginForm({
         className="w-full cursor-pointer"
         onClick={() => handleDemoLogin("super")}
       >
-        <MdAdminPanelSettings />
+        <MdAdminPanelSettings className="mr-2" />
         Login with Super Admin
+      </Button>
+
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full cursor-pointer"
+        onClick={() => handleDemoLogin("rider")}
+      >
+        <MdPerson className="mr-2" />
+        Login with Rider
+      </Button>
+
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full cursor-pointer"
+        onClick={() => handleDemoLogin("driver")}
+      >
+        <MdDriveEta className="mr-2" />
+        Login with Driver
       </Button>
 
       <div className="text-center text-sm">
